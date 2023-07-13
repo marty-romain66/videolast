@@ -9,7 +9,7 @@ export const authOptions = {
   providers: [
     GoogleProvider({
       clientId: "965966902512-r5v7scijk55mv90r763sno1amp8gkl1q.apps.googleusercontent.com",
-      clientSecret: "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"
+      clientSecret: "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"
     })
   ],
   callbacks: {
