@@ -23,13 +23,13 @@ export default function Header2() {
               <div className="flex items-center px-2 lg:px-0">
                 <Link href="/" className="flex-shrink-0">
                   <img
-                    className="block lg:hidden h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
+                    className="block lg:hidden h-16 w-auto"
+                    src="/logo.svg"
                     alt="Workflow"
                   />
                   <img
-                    className="hidden lg:block h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg"
+                    className="hidden lg:block h-16 w-auto"
+                    src="/logo.svg"
                     alt="Workflow"
                   />
                 </Link>

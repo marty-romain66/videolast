@@ -30,7 +30,7 @@ export default function AlaUne() {
     })
   }, [])
   return (
-    <div className="flex justify-center h-[130vh] relative mb-14 ">
+    <div className="flex justify-center h-[130vh] relative mb-24 ">
       <div id="test" className="h-[100vh]  rounded-3xl  bg-black flex flex-col lg:flex-row  sticky top-0  ">
         <div className="lg:w-[50%]  h-[100vh] ">
           {" "}

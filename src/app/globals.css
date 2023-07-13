@@ -163,3 +163,7 @@ body {
   transition: opacity .6s;
   width: 100%;
 }
+.bounce{
+  transition-timing-function: cubic-bezier(0.64, 0.57, 0.67, 1.53);
+transition-duration: 2.9s;
+}

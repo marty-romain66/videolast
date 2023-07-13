@@ -174,7 +174,7 @@ console.log(allComment)
         {article?  <ModalArticle  /> : null}
        
         {discount?  <ModalDiscount discount={discount}/> : null}
-        { comment[0]?.id ? <ModalComment userId={session.user.id} videoId={id}  comment={comment} allComment={allComment}/> : null}
+        { comment[0]?.id ? <ModalComment userId={session?.user?.id} videoId={id}  comment={comment} allComment={allComment}/> : null}
 
 
        

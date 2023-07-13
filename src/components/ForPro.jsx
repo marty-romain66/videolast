@@ -1,18 +1,25 @@
 
-import React, { useState } from "react";
+import React, { use, useState, useEffect } from "react";
 import ScrollText from "./ScrollText";
 import Link from "next/link";
 import { createContext } from 'react';
+
 export default function ForPro() {
   const [velo, setVelo] = useState(50);
   const VeloContext = createContext(velo);
+
+
+
 
   return (
     //contexte
 
   
 
-    <Link href="/pro" onMouseOver={()=> setVelo(200)}  >
+    <Link  href="/pro" onMouseOver={()=> setVelo(200)}  >
+      <div className="flex justify-center bounce">
+      <img  src="/logo.svg" alt="" />
+      </div>
       <VeloContext.Provider value={velo}>
     <div id="scale"  className="w-[80%]  mx-auto bg-[#ffe95c] rounded-xl p-4 ">
       <div className="flex items-center justify-center gap-4">

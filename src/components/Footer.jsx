@@ -74,7 +74,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-8 md:mt-0 md:order-1">
-          <p className="text-center text-base text-gray-400">&copy; 2020 Workflow, Inc. All rights reserved.</p>
+          <p className="text-center text-base text-gray-400">&copy; 2023 Enventiss, Inc. All rights reserved.</p>
         </div>
       </div>
     </footer>
