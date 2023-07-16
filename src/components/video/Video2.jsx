@@ -161,14 +161,14 @@ console.log(allComment)
         
         </div>
       <div className="absolute top-0  right-0 mr-8  w-[10%] h-full flex flex-col justify-center gap-11 items-center">
-      <IconContext.Provider value={{ size: "2.5rem" }}>
+      <IconContext.Provider value={{ size: "1.5rem" }}>
       <div className="stage flex flex-col ">
   <div className={`heart ${isActive ? 'is-active' : ''}`} onClick={()=>{addLike(session?.user.id, id)}}></div>
   <p className=" text-center"> {likeCount} </p>
 </div>
       
         
-        <FaShare/>
+   
         {map?  <ModalMap/> : null}
      
         {article?  <ModalArticle  /> : null}
