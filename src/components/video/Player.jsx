@@ -1,11 +1,25 @@
 "use client";
-import { use, useEffect, useRef, useState } from "react";
+import { use, useEffect, useRef, useState, useContext } from "react";
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import Video2 from "./Video2";
 import addLike from "../LikeCount";
+import { MyContext, MyContextProvider } from "@/components/MyContext";
+
+
+
+
 gsap.registerPlugin(ScrollTrigger);
+
 export default function Player({ path }) {
+  
+  
+  
+  const {data, setData} = useContext(MyContext);
+  useEffect(() => {
+    setData(3);
+  }, []);
+
   const snapContainerRef = useRef(null);
   const videoRefs = useRef([]);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
@@ -66,14 +80,16 @@ export default function Player({ path }) {
   }, []);
 
   return (
+    
     <div className="w-screen h-screen overflow-scroll snap-mandatory snap-y no-scrollbars overflow-x-hidden ">
       {video &&
-        video?.map((e, id) => {
+        video?.slice(0 , data).map((e, id) => {
           return (
             // eslint-disable-next-line react/jsx-key
             <>
               <Video2
-                key={e.id}
+           
+                key={id}
                 src={e.url}
                 id={e.id}
                 comment={e.comment}
@@ -87,5 +103,7 @@ export default function Player({ path }) {
           );
         })}
     </div>
+  
+   
   );
 }

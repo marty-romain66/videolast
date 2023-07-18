@@ -1,15 +1,18 @@
 "use client";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext,createContext } from "react";
 import Card from "@/components/Card";
 import AlaUne from "@/components/AlaUne";
-import Test3 from "@/components/Test3";
-import ScrollText from "@/components/ScrollText";
 import ForPro from "@/components/ForPro";
 import VideoIntro from "@/components/VideoIntro";
+import { MyContext, MyContextProvider } from "@/components/MyContext";
+
+
+
 
 // eslint-disable-next-line no-unused-vars
 export default function Home() {
+
   const [videos, setVideos] = useState([]);
   const { data: session, status } = useSession();
   const [conect, setConect] = useState(false);
@@ -53,10 +56,15 @@ export default function Home() {
 
   return (
     <>
+
       <Card />
       <VideoIntro />
       <AlaUne />
       <ForPro />
+    
+   
+    
     </>
   );
 }
+

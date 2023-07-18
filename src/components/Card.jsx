@@ -3,16 +3,17 @@ import Link from "next/link";
 import { use, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import localFont from "next/font/local";
+import Image from 'next/legacy/image'
 
 const posts = [
   {
     title: "Ou Mangez",
-    href: "/manger",
+    href: "manger",
     category: { name: "Restautants, fast-food, spécialitées", href: "#" },
     description:
       "Découvrez des nouveaux restaurants au quel vous n'avez jamais pensé aller. En un coup d'oeil, choisissez votre restaurant en fonction de vos envies . ",
     datetime: "2020-03-16",
-    imageUrl: "./imageresto.jpg",
+    imageUrl: "/imageresto.jpg",
     readingTime: "6 min",
     author: {
       name: "Roel Aufderehar",
@@ -29,7 +30,7 @@ const posts = [
       "Découvrez les événements, les visites, les festivitées, les activitées à faire, avez le format video, en un coup d'oeil, choisissez votre activité en fonction de vos envies . ",
     date: "Mar 10, 2020",
     datetime: "2020-03-10",
-    imageUrl: "./festival.jpg",
+    imageUrl: "/festival.jpg",
     readingTime: "4 min",
     author: {
       name: "Brenna Goyette",
@@ -46,7 +47,7 @@ const posts = [
       "Envie d' un bon bol d'air frais, de nature, de verdure, de paysages, de randonnées, de plages, de rivieres, de lacs, de montagnes, de forêts, de cascades, de grottes... C'est par ici !",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
-    imageUrl: "./plage.jpg",
+    imageUrl: "/plage.jpg",
     readingTime: "11 min",
     author: {
       name: "Daniela Metz",
@@ -63,7 +64,7 @@ const posts = [
       "Découvrez les produits locaux, les artisans, les producteurs, les créateurs, les artistes, les commerçants des Pyrénées Orientales, sous un autre angle . ",
     date: "Feb 12, 2020",
     datetime: "2020-02-12",
-    imageUrl: "./plage.jpg",
+    imageUrl: "/plage.jpg",
     readingTime: "11 min",
     author: {
       name: "Daniela Metz",
@@ -153,8 +154,9 @@ const Card = ({ conect }) => {
             >
               <div className="flex-shrink-0 h-full relative ">
                 <div className="h-full w-full  rounded-xl relative">
-                  <img
-                    className="h-full w-full object-cover rounded-xl"
+                  <Image    width={500}
+      height={500}
+                    className=" object-cover rounded-xl"
                     src={post.imageUrl}
                     alt=""
                   />

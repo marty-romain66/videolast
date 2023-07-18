@@ -1,44 +1,41 @@
-import React, { use } from "react";
-import { useRef, useState, useEffect, useLayoutEffect } from "react";
-import { AiFillHeart } from "react-icons/ai";
-import { FaCommentDots } from "react-icons/fa";
-import { FaShare } from "react-icons/fa";
+import React from "react";
+import { useRef, useState, useEffect, useLayoutEffect, useContext } from "react";
 import { IconContext } from "react-icons/lib";
 import { InView } from "react-intersection-observer";
-import { useSession } from 'next-auth/react'
-import { PrismaClient } from "@prisma/client";
-import Like from "../Like";
+import { useSession } from "next-auth/react";
 import ModalMap from "../ModalMap";
 import ModalArticle from "../ModalArticle";
 import ModalDiscount from "../ModalDiscount";
-
-
-import HeartComponent from "../HeartComponent";
 import ModalComment from "../ModalComment";
+import { MyContext, MyContextProvider } from "@/components/MyContext";
 
+const Video2 = ({
 
-
-    const Video2 =  ({ src, id, description, author,map,discount,article,comment }) => {
-      const { data: session, status } = useSession()
-  const [like, setLike] = useState(false);
+  src,
+  id,
+  description,
+  author,
+  map,
+  discount,
+  article,
+  comment,
+}) => {
+  const { data: session, status } = useSession();
   const [likeCount, setLikeCount] = useState(0);
   const [inScreen, setInScreen] = useState(false);
-  const [isLiked, setIsLiked] = useState(false);
-  const [deleteLike, setDeleteLike] = useState(false);
-
-
   const videoRef = useRef();
-  const likeRef = useRef();
-
   const [isActive, setIsActive] = useState(false);
-const allComment = comment.map((comment) => comment.text)
-console.log(allComment)
+  const {data, setData} = useContext(MyContext);
+
+  const allComment = comment.map((comment) => comment.text);
 
 
   useEffect(() => {
     console.log("inScreen v", inScreen);
     if (inScreen) {
       playVideo();
+     
+  
     } else {
       pauseVideo();
     }
@@ -62,9 +59,8 @@ console.log(allComment)
     videoRef.current.play();
   };
 
-
   const addLike = (userId, videoId) => {
-    console.log(session?.user.id )
+    console.log(session?.user.id);
     fetch("http://localhost:3000/api/like", {
       method: "POST",
       headers: {
@@ -72,7 +68,7 @@ console.log(allComment)
       },
       body: JSON.stringify({
         userId,
-        videoId
+        videoId,
       }),
     })
       .then((res) => {
@@ -105,42 +101,57 @@ console.log(allComment)
         return res.json();
       })
       .then((data) => {
-    function test(){
-      data.like.map((like) => like.userId === session?.user.id ? setDeleteLike([like.id, session?.user.id]) : null) 
-    }
-    test()
+        function test() {
+          data.like.map((like) =>
+            like.userId === session?.user.id
+              ? setDeleteLike([like.id, session?.user.id])
+              : null
+          );
+        }
+        test();
 
         setLikeCount(data.count);
-       
-        if(data.dejaLike===true){
-          setIsActive(true)
+
+        if (data.dejaLike === true) {
+          setIsActive(true);
         }
-        console.log(data.dejaLike)
+        console.log(data.dejaLike);
       })
       .catch((error) => {
         console.error("Une erreur est survenue :", error);
       });
   }, [likeCount]);
 
-  
   return (
     <InView
       key={id}
       as="div"
       onChange={(inView, entry) => {
+        console.log("inView", inView, entry);
+        if(inView === true && entry.isIntersecting === true){
+          setData(data + 1)
+          console.log("data", data)
+        }
         setInScreen(inView);
+       
+       
+        setData(data + 1)
         if (inView) {
           playVideo();
+         
         } else {
+          // replay video on start
+          videoRef.current.currentTime = 0;
+          
           pauseVideo();
+
         }
       }}
       className="  h-[90%]  m-auto mb-36 relative snap-start bg-gray-700 "
       threshold={0.5}
     >
-      
       <video
-    
+      
         ref={videoRef}
         controls={false}
         className="w-full h-full "
@@ -150,40 +161,40 @@ console.log(allComment)
         playsinline={true}
         disableRemotePlayback={true}
       ></video>
-   
-      <div className=" absolute bottom-6 left-6 m-2  p-8 bg-white bg-opacity-25 rounded-xl"><p>
-        {description? description : null  }
-        </p>
-        
-        <p> {author? author : null} </p>
-        
-        
-        
-        </div>
-      <div className="absolute top-0  right-0 mr-8  w-[10%] h-full flex flex-col justify-center gap-11 items-center">
-      <IconContext.Provider value={{ size: "1.5rem" }}>
-      <div className="stage flex flex-col ">
-  <div className={`heart ${isActive ? 'is-active' : ''}`} onClick={()=>{addLike(session?.user.id, id)}}></div>
-  <p className=" text-center"> {likeCount} </p>
-</div>
-      
-        
-   
-        {map?  <ModalMap/> : null}
-     
-        {article?  <ModalArticle  /> : null}
-       
-        {discount?  <ModalDiscount discount={discount}/> : null}
-        { comment[0]?.id ? <ModalComment userId={session?.user?.id} videoId={id}  comment={comment} allComment={allComment}/> : null}
 
+      <div className=" absolute bottom-6 left-6 m-2  p-8 bg-white bg-opacity-25 rounded-xl">
+        <p>{description ? description : null}</p>
 
-       
-        </IconContext.Provider>
-     
-   
+        <p> {author ? author : null} </p>
       </div>
-    
+      <div className="absolute top-0  right-0 mr-8  w-[10%] h-full flex flex-col justify-center gap-11 items-center">
+        <IconContext.Provider value={{ size: "1.5rem" }}>
+          <div className="stage flex flex-col ">
+            <div
+              className={`heart ${isActive ? "is-active" : ""}`}
+              onClick={() => {
+                addLike(session?.user.id, id);
+              }}
+            ></div>
+            <p className=" text-center"> {likeCount} </p>
+          </div>
+<p>{id}</p>
+          {map ? <ModalMap /> : null}
+
+          {article ? <ModalArticle /> : null}
+
+          {discount ? <ModalDiscount discount={discount} /> : null}
+          {comment[0]?.id ? (
+            <ModalComment
+              userId={session?.user?.id}
+              videoId={id}
+              comment={comment}
+              allComment={allComment}
+            />
+          ) : null}
+        </IconContext.Provider>
+      </div>
     </InView>
   );
-}
+};
 export default Video2;

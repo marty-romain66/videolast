@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 // import gsap
 import { gsap } from "gsap/dist/gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import Image from "next/legacy/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +37,7 @@ export default function AlaUne() {
           {" "}
           <img
             className="w-full h-full object-cover"
-            src="./1.jpg"
+            src="/1.jpg"
             alt=""
           />
         </div>
