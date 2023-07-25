@@ -55,7 +55,7 @@ export default function Home() {
   const itemHeight = 200; // Définis ici la hauteur de chaque image (en pixels)
 
   return (
-    <>
+   <div className=" overflow-x-hidden">
 
       <Card />
       <VideoIntro />
@@ -64,7 +64,7 @@ export default function Home() {
     
    
     
-    </>
+      </div>
   );
 }
 
