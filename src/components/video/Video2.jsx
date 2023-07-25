@@ -146,13 +146,13 @@ const Video2 = ({
           pauseVideo();
         }
       }}
-      className="  h-[90vh] w-[100vw]  m-auto mb-36 relative snap-start bg-gray-700 "
+      className="  h-[90vh] w-[100vw]  m-auto mb-36 relative snap-start bg-transparent  "
       threshold={0.5}
     >
       <video
         ref={videoRef}
      controls={false}
-        className="w-full h-full "
+        className="w-full h-full -z-50 absolute top-0 object-cover "
         
         src={src}
         loop
