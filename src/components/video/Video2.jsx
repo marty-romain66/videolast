@@ -1,5 +1,11 @@
 import React from "react";
-import { useRef, useState, useEffect, useLayoutEffect, useContext } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useContext,
+} from "react";
 import { IconContext } from "react-icons/lib";
 import { InView } from "react-intersection-observer";
 import { useSession } from "next-auth/react";
@@ -10,7 +16,6 @@ import ModalComment from "../ModalComment";
 import { MyContext, MyContextProvider } from "@/components/MyContext";
 
 const Video2 = ({
-
   src,
   id,
   description,
@@ -25,17 +30,14 @@ const Video2 = ({
   const [inScreen, setInScreen] = useState(false);
   const videoRef = useRef();
   const [isActive, setIsActive] = useState(false);
-  const {data, setData} = useContext(MyContext);
+  const { data, setData } = useContext(MyContext);
 
   const allComment = comment.map((comment) => comment.text);
-
 
   useEffect(() => {
     console.log("inScreen v", inScreen);
     if (inScreen) {
       playVideo();
-     
-  
     } else {
       pauseVideo();
     }
@@ -128,30 +130,26 @@ const Video2 = ({
       as="div"
       onChange={(inView, entry) => {
         console.log("inView", inView, entry);
-        if(inView === true && entry.isIntersecting === true){
-          setData(data + 1)
-          console.log("data", data)
+        if (inView === true && entry.isIntersecting === true) {
+          setData(data + 1);
+          console.log("data", data);
         }
         setInScreen(inView);
-       
-       
-        setData(data + 1)
+
+        setData(data + 1);
         if (inView) {
           playVideo();
-         
         } else {
           // replay video on start
           videoRef.current.currentTime = 0;
-          
-          pauseVideo();
 
+          pauseVideo();
         }
       }}
       className="  h-[90%]  m-auto mb-36 relative snap-start bg-gray-700 "
       threshold={0.5}
     >
       <video
-      
         ref={videoRef}
         controls
         className="w-full h-full "
@@ -160,6 +158,8 @@ const Video2 = ({
         loop
         playsinline={true}
         disableRemotePlayback={true}
+        muted
+        poster="/1.jpg"
       ></video>
 
       <div className=" absolute bottom-6 left-6 m-2  p-8 bg-white bg-opacity-25 rounded-xl">
@@ -178,20 +178,19 @@ const Video2 = ({
             ></div>
             <p className=" text-center"> {likeCount} </p>
           </div>
-<p>{id}</p>
+          <p>{id}</p>
           {map ? <ModalMap /> : null}
 
           {article ? <ModalArticle /> : null}
 
           {discount ? <ModalDiscount discount={discount} /> : null}
-      
-            <ModalComment
-              userId={session?.user?.id}
-              videoId={id}
-              comment={comment}
-              allComment={allComment}
-            />
-        
+
+          <ModalComment
+            userId={session?.user?.id}
+            videoId={id}
+            comment={comment}
+            allComment={allComment}
+          />
         </IconContext.Provider>
       </div>
     </InView>
