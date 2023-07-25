@@ -151,7 +151,7 @@ const Video2 = ({
     >
       <video
         ref={videoRef}
-     
+     controls={false}
         className="w-full h-full "
         
         src={src}
