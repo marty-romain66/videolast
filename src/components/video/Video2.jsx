@@ -159,7 +159,7 @@ const Video2 = ({
         playsinline={true}
         disableRemotePlayback={true}
         muted
-        poster="/1.jpg"
+        autoPlay
       ></video>
 
       <div className=" absolute bottom-6 left-6 m-2  p-8 bg-white bg-opacity-25 rounded-xl">
