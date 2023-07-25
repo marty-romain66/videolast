@@ -153,7 +153,7 @@ const Video2 = ({
       <video
       
         ref={videoRef}
-        controls={false}
+        controls
         className="w-full h-full "
         onClick={handleVideo}
         src={src}
@@ -184,14 +184,14 @@ const Video2 = ({
           {article ? <ModalArticle /> : null}
 
           {discount ? <ModalDiscount discount={discount} /> : null}
-          {comment[0]?.id ? (
+      
             <ModalComment
               userId={session?.user?.id}
               videoId={id}
               comment={comment}
               allComment={allComment}
             />
-          ) : null}
+        
         </IconContext.Provider>
       </div>
     </InView>
