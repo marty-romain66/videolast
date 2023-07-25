@@ -151,9 +151,9 @@ const Video2 = ({
     >
       <video
         ref={videoRef}
-        controls
+     
         className="w-full h-full "
-        onClick={handleVideo}
+        
         src={src}
         loop
         playsinline={true}
