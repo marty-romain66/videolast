@@ -121,7 +121,9 @@ body {
   
 }
 
-
+.hidden2 {
+  overflow: hidden;
+}
 
 
 
