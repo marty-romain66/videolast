@@ -146,7 +146,7 @@ const Video2 = ({
           pauseVideo();
         }
       }}
-      className="  h-[90%]  m-auto mb-36 relative snap-start bg-gray-700 "
+      className="  h-[90vh] w-[100vw]  m-auto mb-36 relative snap-start bg-gray-700 "
       threshold={0.5}
     >
       <video
