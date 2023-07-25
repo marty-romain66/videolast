@@ -162,7 +162,7 @@ const Video2 = ({
         autoPlay
       ></video>
 
-      <div className=" absolute bottom-6 left-6 m-2  p-8 bg-white bg-opacity-25 rounded-xl">
+      <div className=" absolute bottom-6 left-6 m-2  z-50  p-8 bg-white bg-opacity-25 rounded-xl">
         <p>{description ? description : null}</p>
 
         <p> {author ? author : null} </p>
