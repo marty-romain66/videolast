@@ -122,7 +122,8 @@ body {
 }
 
 .hidden2 {
-  overflow: hidden;
+  
+  overflow-x: hidden;
 }
 
 
