@@ -148,6 +148,7 @@ const Video2 = ({
       }}
       className="  h-[90vh] w-[100vw]  m-auto mb-36 relative snap-start bg-transparent  "
       threshold={0.5}
+      onClick={handleVideo}
     >
       <video
         ref={videoRef}
