@@ -48,17 +48,20 @@ const Video2 = ({
     if (videoRef.current.paused) playVideo();
     if (videoRef.current.muted) {
       videoRef.current.muted = false;
+      videoRef.current.playsinline = true;
     }
   };
 
   let pauseVideo = () => {
     if (!videoRef.current) return false;
     videoRef.current.pause();
+    videoRef.current.playsinline = true;
   };
 
   let playVideo = () => {
     if (!videoRef.current) return false;
     videoRef.current.play();
+    videoRef.current.playsinline = true;
   };
 
   const addLike = (userId, videoId) => {
