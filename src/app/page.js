@@ -56,8 +56,8 @@ export default function Home() {
 
   return (
    <div className=" overflow-x-hidden">
-
       <Card />
+<p className="text-white">ok</p>
       <VideoIntro />
       <AlaUne />
       <ForPro />
