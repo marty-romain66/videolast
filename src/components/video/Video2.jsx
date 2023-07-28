@@ -153,19 +153,19 @@ const Video2 = ({
       threshold={0.5}
       onClick={handleVideo}
     >
-      <video
-        ref={videoRef}
-        className="w-full h-full -z-50 absolute top-0 object-cover "
-        onClick={handleVideo}
-        // src={src}
-        loop
-        playsinline={true}
-        muted
-        autoPlay
-        webkit-playsinline
-      >
-        <source src={src} />
-      </video>
+     <video
+  ref={videoRef}
+  className="w-full h-full -z-50 absolute top-0 object-cover "
+  onClick={handleVideo}
+  loop
+  playsInline
+  muted
+  autoPlay
+  controls={false}
+  controlsList="nodownload" // Cacher l'option de téléchargement sur certains navigateurs
+>
+  <source src={src} />
+</video>
 
       <div className=" absolute bottom-6 left-6 m-2  z-50  p-8 bg-white bg-opacity-25 rounded-xl">
         <p>{description ? description : null}</p>
