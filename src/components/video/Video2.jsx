@@ -155,7 +155,6 @@ const Video2 = ({
     >
       <video
         ref={videoRef}
-     controls={false}
         className="w-full h-full -z-50 absolute top-0 object-cover "
         onClick={handleVideo}
         // src={src}
@@ -163,6 +162,7 @@ const Video2 = ({
         playsinline={true}
         muted
         autoPlay
+        webkit-playsinline
       >
         <source src={src} />
       </video>
